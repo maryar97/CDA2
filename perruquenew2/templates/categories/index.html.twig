@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	ACCUEIL
+{% endblock %}
+
+{% block body %}
+
+
+<!-- <img src="images/Perruques 360°/image50.jpeg" alt=""> -->
+
+<main class="container">
+	<section class="row">
+		{% for categorie in categories %}
+			{% if categorie.parent == null %}
+					<h2>{{ categorie.nomcat }}</h2>
+						<div class="row">
+					{% for cat in categorie.categories %}
+                        <div class="col-4"> 
+						<div class="card" style="width: 15rem;">
+							<div class="card-body" >
+								<h8 class="card-title">{{ cat.nomcat }}</h8>
+                                <a href="{{path('list', {'id':cat.id,'sousrubriqueart':cat.nomcat})}}" class="btn btn-danger">Voir les produits</a>
+							</div>
+						</div>
+						</div>
+					{% endfor %}
+						</div>
+			{% endif %}
+		{% endfor %}
+		<!--<div class"col-12">
+			{{ dump() }}
+		</div>-->
+	</section>
+</main>
+
+
+		
+		
+		{% endblock %}
